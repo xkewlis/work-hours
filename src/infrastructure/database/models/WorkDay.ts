@@ -34,7 +34,6 @@ WorkDaySequelize.init(
     userId: {
       type: DataTypes.BIGINT,
       allowNull: false,
-      field: 'user_id',
       references: {
         model: UserSequelize,
         key: 'id'
@@ -44,40 +43,33 @@ WorkDaySequelize.init(
     },
     workDate: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
-      field: 'work_date'
+      allowNull: false
     },
     totalWorkedSeconds: {
       type: DataTypes.INTEGER,
-      allowNull: true,
-      field: 'total_worked_seconds'
+      allowNull: true
     },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
-      field: 'created_at',
       defaultValue: DataTypes.NOW
     },
     updatedAt: {
       type: DataTypes.DATE,
       allowNull: false,
-      field: 'updated_at',
       defaultValue: DataTypes.NOW
     },
     deletedAt: {
       type: DataTypes.DATE,
-      allowNull: true,
-      field: 'deleted_at'
+      allowNull: true
     }
   },
   {
     sequelize,
-    tableName: 'work_days',
-    modelName: 'WorkDay',
+    modelName: 'work_days',
     timestamps: true,
     underscored: true,
     paranoid: true,
-    freezeTableName: true,
     indexes: [
       {
         unique: true,

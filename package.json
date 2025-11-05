@@ -24,6 +24,7 @@
   "description": "",
   "dependencies": {
     "@hono/node-server": "^1.19.6",
+    "bcryptjs": "^3.0.3",
     "cross-env": "^10.1.0",
     "dotenv": "^17.2.3",
     "hono": "^4.10.4",

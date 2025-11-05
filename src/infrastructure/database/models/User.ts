@@ -44,8 +44,7 @@ UserSequelize.init(
     },
     passwordHash: {
       type: DataTypes.STRING,
-      allowNull: true,
-      field: 'password_hash'
+      allowNull: true
     },
     type: {
       type: DataTypes.ENUM(...Object.values(UserType)),
@@ -55,41 +54,34 @@ UserSequelize.init(
     googleUuid: {
       type: DataTypes.UUID,
       allowNull: true,
-      unique: true,
-      field: 'google_uuid'
+      unique: true
     },
     displayName: {
       type: DataTypes.STRING,
-      allowNull: true,
-      field: 'display_name'
+      allowNull: true
     },
     photoUrl: {
       type: DataTypes.STRING,
-      allowNull: true,
-      field: 'photo_url'
+      allowNull: true
     },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
-      field: 'created_at',
       defaultValue: DataTypes.NOW
     },
     updatedAt: {
       type: DataTypes.DATE,
       allowNull: false,
-      field: 'updated_at',
       defaultValue: DataTypes.NOW
     },
     deletedAt: {
       type: DataTypes.DATE,
-      allowNull: true,
-      field: 'deleted_at'
+      allowNull: true
     }
   },
   {
     sequelize,
-    tableName: 'users',
-    modelName: 'User',
+    modelName: 'users',
     timestamps: true,
     underscored: true,
     paranoid: true,

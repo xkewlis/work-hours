@@ -35,7 +35,6 @@ WorkMarkSequelize.init(
     workDayId: {
       type: DataTypes.BIGINT,
       allowNull: false,
-      field: 'work_day_id',
       references: {
         model: WorkDaySequelize,
         key: 'id'
@@ -49,35 +48,29 @@ WorkMarkSequelize.init(
     },
     markTimestamp: {
       type: DataTypes.DATE,
-      allowNull: false,
-      field: 'mark_timestamp'
+      allowNull: false
     },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
-      field: 'created_at',
       defaultValue: DataTypes.NOW
     },
     updatedAt: {
       type: DataTypes.DATE,
       allowNull: false,
-      field: 'updated_at',
       defaultValue: DataTypes.NOW
     },
     deletedAt: {
       type: DataTypes.DATE,
-      allowNull: true,
-      field: 'deleted_at'
+      allowNull: true
     }
   },
   {
     sequelize,
-    tableName: 'work_marks',
-    modelName: 'WorkMark',
+    modelName: 'work_marks',
     timestamps: true,
     underscored: true,
     paranoid: true,
-    freezeTableName: true,
     indexes: [
       {
         fields: ['work_day_id', 'mark_timestamp'],

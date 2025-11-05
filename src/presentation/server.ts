@@ -3,6 +3,7 @@ import {Hono} from "hono"
 import {cors} from "hono/cors"
 import {DbSequelize} from "@/infrastructure/database/init"
 import appConfig from "@/shared/env"
+import AppRoutes from "./routes/routes"
 
 export class Server {
     public readonly app: Hono
@@ -19,7 +20,7 @@ export class Server {
             console.time('start server')
             await DbSequelize()
             this.cors()
-            // this.app.route('/', new AppRoutes().routes)
+            this.app.route('/', new AppRoutes().routes)
             this.server()
 
         } catch (error) {
