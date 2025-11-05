@@ -66,7 +66,7 @@ export class UserDatasourceImpl implements UserDatasource {
                 return await this.createLocalUser(user);
             }
 
-            throw CustomError.badRequest('Invalid user data: either googleUuid or password is required'); // ✅ CAMBIO
+            throw CustomError.badRequest('Invalid user data: either googleUuid or password is required');
 
         } catch (error) {
             if (error instanceof CustomError) {
@@ -118,7 +118,7 @@ export class UserDatasourceImpl implements UserDatasource {
             const existingUser = await this.findByEmail(user.email);
 
             if (existingUser) {
-                throw CustomError.badRequest('User already exists with this email'); // ✅ CAMBIO
+                throw CustomError.badRequest('User already exists with this email');
             }
 
             // Hash de la contraseña
@@ -150,17 +150,17 @@ export class UserDatasourceImpl implements UserDatasource {
             });
 
             if (!userRow) {
-                throw CustomError.unauthorized('Invalid credentials'); // ✅ CAMBIO
+                throw CustomError.unauthorized('Invalid credentials');
             }
 
             if (!userRow.passwordHash) {
-                throw CustomError.badRequest('This account uses Google Sign-In'); // ✅ CAMBIO
+                throw CustomError.badRequest('This account uses Google Sign-In');
             }
 
             const isValidPassword = await bcrypt.compare(password, userRow.passwordHash);
 
             if (!isValidPassword) {
-                throw CustomError.unauthorized('Invalid credentials'); // ✅ CAMBIO
+                throw CustomError.unauthorized('Invalid credentials');
             }
 
             return UserEntity.fromRow(userRow);
