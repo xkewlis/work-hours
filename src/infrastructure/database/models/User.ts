@@ -52,7 +52,7 @@ UserSequelize.init(
       defaultValue: UserType.LOCAL
     },
     googleUuid: {
-      type: DataTypes.UUID,
+      type: DataTypes.STRING,
       allowNull: true,
       unique: true
     },
