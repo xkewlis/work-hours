@@ -12,11 +12,10 @@ export interface WorkDayRow {
   deletedAt?: Date | null;
 }
 
-export class WorkDaySequelize extends Model<WorkDayRow, Omit<WorkDayRow, 'id'>>
-  implements WorkDayRow {
+export class WorkDaySequelize extends Model<WorkDayRow, Omit<WorkDayRow, 'id'>>{
   declare id: number;
   declare userId: number;
-  declare workDate: Date;
+  declare workDate: string;
   declare totalWorkedSeconds?: number | null;
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;
@@ -37,9 +36,7 @@ WorkDaySequelize.init(
       references: {
         model: UserSequelize,
         key: 'id'
-      },
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE'
+      }
     },
     workDate: {
       type: DataTypes.DATEONLY,
@@ -51,17 +48,14 @@ WorkDaySequelize.init(
     },
     createdAt: {
       type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW
+      allowNull: false
     },
     updatedAt: {
       type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW
+      allowNull: false
     },
     deletedAt: {
-      type: DataTypes.DATE,
-      allowNull: true
+      type: DataTypes.DATE
     }
   },
   {

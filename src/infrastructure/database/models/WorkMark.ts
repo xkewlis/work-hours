@@ -13,12 +13,11 @@ export interface WorkMarkRow {
   deletedAt?: Date | null;
 }
 
-export class WorkMarkSequelize extends Model<WorkMarkRow, Omit<WorkMarkRow, 'id'>>
-  implements WorkMarkRow {
+export class WorkMarkSequelize extends Model<WorkMarkRow, Omit<WorkMarkRow, 'id'>>{
   declare id: number;
   declare workDayId: number;
   declare type: MarkType;
-  declare markTimestamp: Date;
+  declare markTimestamp: string;
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;
   declare readonly deletedAt?: Date | null;
@@ -38,9 +37,7 @@ WorkMarkSequelize.init(
       references: {
         model: WorkDaySequelize,
         key: 'id'
-      },
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE'
+      }
     },
     type: {
       type: DataTypes.ENUM(...Object.values(MarkType)),
@@ -53,12 +50,10 @@ WorkMarkSequelize.init(
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW
     },
     updatedAt: {
       type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW
+      allowNull: false
     },
     deletedAt: {
       type: DataTypes.DATE,

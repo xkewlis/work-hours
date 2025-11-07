@@ -1,4 +1,5 @@
 import { UserSequelize, WorkDaySequelize, WorkMarkSequelize } from "@/infrastructure/database/models";
+import "@/infrastructure/database/index";
 
 export const DbSequelize = async (): Promise<void> => {
     try {

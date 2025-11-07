@@ -14,7 +14,6 @@ export class UserDto {
         public deletedAt?: Date | null
     ) {}
 
-    // ✅ Para mapear desde la base de datos (requiere id y type)
     static create(object: { [key: string]: any }): [string?, UserDto?] {
         const { id, email, passwordHash, type, googleUuid, displayName, photoUrl, createdAt, updatedAt, deletedAt } = object;
         const errors: string[] = [];
